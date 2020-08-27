@@ -1,6 +1,12 @@
 import React, { useState, useLayoutEffect } from 'react';
 import axios from 'axios'
 
+function Button({ onClick, difficulty  }) {
+  return (
+    <button onClick={onClick}>{difficulty}</button>
+  )
+}
+
 function Question({ question }) {
   return (
     <p>{question}</p>
@@ -21,16 +27,18 @@ function App() {
   const [correct, setCorrect] = useState(0);
   const [incorrect, setIncorrect] = useState(0);
 
-  // Get questions and set timer and score
-  const startQuiz = async () => {
-    const questions = await getQuestions();
+  // Get token, get questions and set timer and score
+  const startQuiz = async (difficulty) => {
+    let token = await axios.get("https://opentdb.com/api_token.php?command=request")
+    token = token.data.token;
+    const questions = await getQuestions(token, difficulty);
     setSeconds(10)
     setQuestions(questions)
   }
 
   // Get data from API, combine and shuffle right/wrong answers
-  const getQuestions = async () => {
-    let trivia = await axios.get("https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=multiple")
+  const getQuestions = async (sessionToken, difficulty) => {
+    let trivia = await axios.get(`https://opentdb.com/api.php?token=${sessionToken}&amount=10&category=9&difficulty=${difficulty}&type=multiple`)
     trivia = trivia.data.results
     trivia.forEach(result => {
       result.answers = shuffle([...result.incorrect_answers, result.correct_answer])
@@ -90,7 +98,9 @@ function App() {
 
   return (
     <div>
-      <button onClick={() => startQuiz()}></button>
+      <Button onClick={() => startQuiz("easy")} difficulty="easy" />
+      <Button onClick={() => startQuiz("medium")} difficulty="medium" />
+      <Button onClick={() => startQuiz("hard")} difficulty="hard" />
       {questions.length > 0 &&
         <div>
           <Question question={questions[0].question} />
