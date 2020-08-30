@@ -1,6 +1,6 @@
 import React from 'react';
 
-function StatsTable({ stats }) {
+function StatsTable({ stats, onClick }) {
 
     return (
         <table>
@@ -21,11 +21,11 @@ function StatsTable({ stats }) {
                     <td>{(stat.correct / (stat.correct + stat.incorrect)) * 100}%</td>
                     <td>{stat.date}</td>
                     <td>{stat.time}</td>
-
                 </tr>
             ))}
         </tbody>
         <a href="/">Back</a>
+        <button onClick={onClick}>Clear</button>
       </table>
     )
 }
