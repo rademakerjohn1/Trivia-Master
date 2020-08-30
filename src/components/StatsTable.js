@@ -8,8 +8,9 @@ function StatsTable({ stats }) {
           <tr>
             <th>Initials</th>
             <th>Difficulty</th>
-            <th>Correct</th>
-            <th>Incorrect</th>
+            <th>Score</th>
+            <th>Date</th>
+            <th>Time</th>
           </tr>
         </thead>
         <tbody>
@@ -17,11 +18,14 @@ function StatsTable({ stats }) {
                 <tr>
                     <td>{stat.initials}</td>
                     <td>{stat.difficulty}</td>
-                    <td>{stat.correct}</td>
-                    <td>{stat.incorrect}</td>
+                    <td>{(stat.correct / (stat.correct + stat.incorrect)) * 100}%</td>
+                    <td>{stat.date}</td>
+                    <td>{stat.time}</td>
+
                 </tr>
             ))}
         </tbody>
+        <a href="/">Back</a>
       </table>
     )
 }
