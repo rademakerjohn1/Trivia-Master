@@ -95,11 +95,19 @@ function Quiz() {
             initials: initials,
             difficulty: difficulty,
             incorrect: incorrect,
-            correct: correct
+            correct: correct,
+            date: new Date(Date.now()).toLocaleString().split(",")[0],
+            time: formatTime()
         }
         setStats(data => [...data, userData])
         setError("")
         window.location = "/scores"
+    }
+
+    const formatTime = () => {
+        let time = new Date(Date.now()).toLocaleString().split(",")[1].trim();
+        let arr = time.split(":")
+        return `${arr[0]}:${arr[1]} ${arr[2].slice(3)}`;
     }
 
     // Randomize array order
@@ -168,6 +176,7 @@ function Quiz() {
                     onSubmit={(event) => handleSave(event)}
                 />
             }
+            {!start && !end && <a href="/scores">See scores</a>}
         </div>
 
     )
