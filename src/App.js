@@ -9,8 +9,8 @@ function App() {
 
   return (
       <HashRouter basename="/">
-          <Route exact path="/" component={Quiz} />
-          <Route path="/scores" component={Scoreboard} />
+          <Route exact path="" component={Quiz} />
+          <Route path="scores" component={Scoreboard} />
       </HashRouter>
   )
 }
