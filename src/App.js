@@ -12,7 +12,7 @@ function App() {
       <Header />
       <Switch>
         <Route exact path="/" component={Quiz} />
-        <Route exact path="/scores" component={Scoreboard} />
+        <Route path="/scores" component={Scoreboard} />
       </Switch>
     </div>
   )
