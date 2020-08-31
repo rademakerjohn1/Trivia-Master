@@ -1,0 +1,27 @@
+#difficulty-btn-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center
+}
+
+#question-answer-container {
+    margin: auto;
+}
+
+ol {
+    list-style-position: inside;
+    padding-inline-start: 0px;
+}
+
+@media screen and (max-width: 425px)  {
+
+    .difficulty-btn, #difficulty-btn-container p {
+        width: 75%;
+        margin-bottom: 10px
+    }
+  
+    #question-answer-container {
+      width: 75%;
+    }
+  }
