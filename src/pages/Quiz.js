@@ -103,7 +103,7 @@ function Quiz() {
         }
         setStats(data => [...data, userData])
         setError("")
-        window.location = "/scores"
+        window.location = "scores"
     }
 
     const formatTime = () => {
