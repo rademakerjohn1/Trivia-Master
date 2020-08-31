@@ -14,7 +14,7 @@ function Scoreboard() {
     return (
         stats.length > 0 ? 
         <StatsTable stats={stats} onClick={() => clear()} />
-        : <p>No stats available. <span><a href="/">Play a quiz now!</a></span></p>
+        : <p>No stats available. <span><a href="#/">Play a quiz now!</a></span></p>
     )
 }
 export default Scoreboard;
