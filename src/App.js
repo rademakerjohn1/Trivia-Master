@@ -11,7 +11,7 @@ function App() {
       <HashRouter basename="/">
           <Header />
           <Route exact path="" component={Quiz} />
-          <Route path="scores" component={Scoreboard} />
+          <Route path="/scores" component={Scoreboard} />
       </HashRouter>
   )
 }
