@@ -1,4 +1,9 @@
-a.page-link {
-    display: block !important;
-    text-align: center !important;
+#link-container {
+    margin: auto
 }
+
+#page-link {
+    display: block;
+    text-align: center;
+}
+

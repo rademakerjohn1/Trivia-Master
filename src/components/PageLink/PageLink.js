@@ -3,7 +3,9 @@ import './PageLink.css'
 
 function PageLink( {destination, message} ) {
     return(
-        <a className="page-link" href={destination}>{message}</a>
+        <div id="link-container">
+        <a id="page-link" href={destination}>{message}</a>
+        </div>
     )
 }
 
