@@ -1,6 +1,6 @@
 {
-  "name": "trivia-master",
   "homepage": "https://rademakerjohn1.github.io/Trivia-Master",
+  "name": "trivia-master",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
