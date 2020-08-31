@@ -26,7 +26,7 @@ function StatsTable({ stats, onClick }) {
             ))}
         </tbody>
       </table>
-      <a href="/">Back</a>
+      <a href="#/">Back</a>
       <button onClick={onClick}>Clear</button>
       </div>
     )

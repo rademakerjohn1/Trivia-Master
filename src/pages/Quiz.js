@@ -103,7 +103,7 @@ function Quiz() {
         }
         setStats(data => [...data, userData])
         setError("")
-        window.location = "/scores"
+        window.location = "#/scores";
     }
 
     const formatTime = () => {
@@ -143,7 +143,7 @@ function Quiz() {
                         <Button onClick={() => startQuiz("medium")} difficulty="Medium" />
                         <Button onClick={() => startQuiz("hard")} difficulty="Hard" />
                     </div>
-                    <PageLink destination="/scores" message={"See scores"} />
+                    <PageLink destination="#/scores" message={"See scores"} />
                 </div>
             }
 
