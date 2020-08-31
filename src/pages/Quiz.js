@@ -43,7 +43,11 @@ function Quiz() {
         let trivia = await axios.get(`https://opentdb.com/api.php?token=${sessionToken}&amount=10&category=9&difficulty=${difficulty}&type=multiple`)
         trivia = trivia.data.results
         trivia.forEach(result => {
+            result.question = decode(result.question)
             result.answers = shuffle([...result.incorrect_answers, result.correct_answer])
+            for (var i  = 0; i < result.answers.length; i++) {
+                result.answers[i] = decode(result.answers[i])
+            }
         })
         return trivia;
     }
@@ -132,6 +136,12 @@ function Quiz() {
         return array;
     }
 
+    function decode(html) {
+        var text = document.createElement("textarea");
+        text.innerHTML = html;
+        return text.value;
+    }
+
     return (
         <div>
             {/* If quiz not started, render buttons */}
@@ -139,9 +149,9 @@ function Quiz() {
                 <div id="menu">
                     <div id="difficulty-btn-container">
                         <p>Select a difficulty</p>
-                        <Button onClick={() => startQuiz("easy")} difficulty="Easy" />
-                        <Button onClick={() => startQuiz("medium")} difficulty="Medium" />
-                        <Button onClick={() => startQuiz("hard")} difficulty="Hard" />
+                        <Button className="difficulty-btn" onClick={() => startQuiz("easy")} text="Easy" />
+                        <Button className="difficulty-btn" onClick={() => startQuiz("medium")} text="Medium" />
+                        <Button className="difficulty-btn" onClick={() => startQuiz("hard")} text="Hard" />
                     </div>
                     <PageLink destination="#/scores" message={"See scores"} />
                 </div>
