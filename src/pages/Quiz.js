@@ -1,11 +1,13 @@
 import React, { useState, useLayoutEffect, useEffect } from 'react';
+import './Quiz.css'
 import axios from 'axios'
-import Button from '../components/Button'
-import Question from '../components/Question'
-import Answer from '../components/Answer';
-import Timer from '../components/Timer'
-import Scores from '../components/Scores'
-import Form from '../components/Form'
+import Button from '../components/Button/Button'
+import PageLink from '../components/PageLink/PageLink'
+import Question from '../components/Question/Question'
+import Answer from '../components/Answer/Answer';
+import Timer from '../components/Timer/Timer';
+import Scores from '../components/Scores/Scores';
+import Form from '../components/Form/Form'
 
 function Quiz() {
     // State for trivia questions, timer, right/wrong count
@@ -133,33 +135,40 @@ function Quiz() {
     return (
         <div>
             {/* If quiz not started, render buttons */}
-            {!start &&
-                <div id="btn-container">
-                    <Button onClick={() => startQuiz("easy")} difficulty="easy" />
-                    <Button onClick={() => startQuiz("medium")} difficulty="medium" />
-                    <Button onClick={() => startQuiz("hard")} difficulty="hard" />
-                </div>
-            }
-
-            {/* If questions in state render question/answers */}
-            {questions.length > 0 &&
-                <div id="question-answer-container">
-                    <Question question={questions[0].question} />
-                    <div id="answer-container">
-                        {questions[0].answers.map((answer, index) => (
-                            <Answer
-                                key={index}
-                                answer={answer}
-                                onClick={() => userAnswer(index)}
-                            />))
-                        }
+            {(!start && !end) &&
+                <div id="menu">
+                    <div id="difficulty-btn-container">
+                        <p>Select a difficulty</p>
+                        <Button onClick={() => startQuiz("easy")} difficulty="Easy" />
+                        <Button onClick={() => startQuiz("medium")} difficulty="Medium" />
+                        <Button onClick={() => startQuiz("hard")} difficulty="Hard" />
                     </div>
+                    <PageLink destination="/scores" message={"See scores"} />
                 </div>
             }
 
             {/* If quiz started, show timer */}
             {start &&
                 <Timer seconds={seconds} />
+            }
+
+
+            {/* If questions in state render question/answers */}
+            {questions.length > 0 &&
+                <div id="question-answer-container">
+                    <Question question={questions[0].question} />
+                    <div id="answer-container">
+                        <ol type="A">
+                            {questions[0].answers.map((answer, index) => (
+                                <Answer
+                                    key={index}
+                                    answer={answer}
+                                    onClick={() => userAnswer(index)}
+                                />))
+                            }
+                        </ol>
+                    </div>
+                </div>
             }
 
             {/* If quiz started or ended, show scores */}
@@ -176,7 +185,6 @@ function Quiz() {
                     onSubmit={(event) => handleSave(event)}
                 />
             }
-            {!start && !end && <a href="/scores">See scores</a>}
         </div>
 
     )

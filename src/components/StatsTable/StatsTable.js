@@ -3,6 +3,7 @@ import React from 'react';
 function StatsTable({ stats, onClick }) {
 
     return (
+      <div>
         <table>
         <thead>
           <tr>
@@ -24,9 +25,10 @@ function StatsTable({ stats, onClick }) {
                 </tr>
             ))}
         </tbody>
-        <a href="/">Back</a>
-        <button onClick={onClick}>Clear</button>
       </table>
+      <a href="/">Back</a>
+      <button onClick={onClick}>Clear</button>
+      </div>
     )
 }
 
