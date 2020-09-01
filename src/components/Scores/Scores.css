@@ -3,6 +3,10 @@
     justify-content: center;
 }
 
+.score-text {
+    font-weight: bold;
+}
+
 #correct {
-    margin-right: 10px;
+    margin-right: 20px;
 }

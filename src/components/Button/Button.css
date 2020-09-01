@@ -1,5 +1,17 @@
-button, button:focus {
+.difficulty-btn, .difficulty-btn:focus {
     border: none;
-    padding: 10px;
+    background-color: rgb(239, 239, 239);
+    padding: 15px;
     outline: none;
-};
+    border-radius: 10px;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.clear-btn {
+    display: block;
+    border: none;
+    background-color: rgb(239, 239, 239);
+    padding: 15px;
+    outline: none;
+    margin: auto;
+}

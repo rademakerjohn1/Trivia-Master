@@ -3,7 +3,7 @@ import './Header.css'
 
 function Header() {
     return (
-        <h1 id="header">TriviaMaster</h1>
+        <h1 id="header">Trivia Master</h1>
     )
 }
 
