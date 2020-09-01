@@ -1,9 +1,9 @@
 import React from 'react';
 import './Button.css'
 
-function Button({ onClick, difficulty }) {
+function Button({ className, onClick, text }) {
     return (
-      <button className="difficulty-btn" onClick={onClick}>{difficulty}</button>
+      <button className={className} onClick={onClick}>{text}</button>
     )
 }
 export default Button;
