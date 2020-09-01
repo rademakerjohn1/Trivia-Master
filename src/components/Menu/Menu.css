@@ -2,14 +2,26 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    text-align: center
+    text-align: center;
+    margin-bottom: 25px;
 }
 
+#difficulty-btn-container p {
+    width: 100%;
+    color: #e2b26a;
+    font-weight: bold;
+}
+
+.difficulty-btn {
+    width: 25%;
+    margin: 10px;
+}
 
 @media screen and (max-width: 768px)  {
 
     .difficulty-btn, #difficulty-btn-container p {
         width: 75%;
-        margin-bottom: 15px
+        margin-bottom: 15px;
+        height: initial;
     }
 }

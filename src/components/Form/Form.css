@@ -6,6 +6,20 @@ form {
 
 form label {
     display: block;
+    color: #F7FFF7;
+}
+
+form input {
+    height: 25px;
+    margin-bottom: 15px;
+    outline: none;
+}
+
+form button {
+    border: none;
+    padding: 7px 15px;
+    background-color: #E4DFDA;
+    outline: none;
 }
 
 #error {

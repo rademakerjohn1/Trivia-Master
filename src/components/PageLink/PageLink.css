@@ -1,13 +1,15 @@
 #link-container {
-    margin: auto
+    margin: auto;
+    margin-bottom: 15px;
 }
 
 #page-link {
     display: block;
+    color: white;
     text-align: center;
 }
 
-@media screen and (max-width: 425px)  {
+@media screen and (max-width: 768px)  {
 
     #link-container {
         margin-top: 15px;

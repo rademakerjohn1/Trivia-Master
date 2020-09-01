@@ -1,11 +1,22 @@
 .answer {
-    background-color: rgb(239, 239, 239);
+    background-color: #E4DFDA;
     border-radius: 10px;
+    margin: auto;
+    padding: 20px 20px 20px 25px;
+    margin-bottom: 15px;
+    box-shadow: 5px 5px 5px rgba(0,0,0,.2);
+
 }
+
+.answer:hover {
+    background-color: #a3a7a5;
+}
+
 
 @media screen and (max-width: 768px)  {
     .answer {
         margin-bottom: 15px;
         padding: 15px 15px 15px 25px;
+        width: initial;
     }
 }

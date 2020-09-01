@@ -1,17 +1,21 @@
 .difficulty-btn, .difficulty-btn:focus {
     border: none;
-    background-color: rgb(239, 239, 239);
-    padding: 15px;
+    padding: 20px;
+    background-color: #E4DFDA;
+    color: #48A9A6;
     outline: none;
     border-radius: 10px;
     font-family: 'Press Start 2P', cursive;
+    box-shadow: 5px 5px 5px rgba(0,0,0,.2);
 }
+
 
 .clear-btn {
     display: block;
     border: none;
     background-color: rgb(239, 239, 239);
-    padding: 15px;
+    padding: 10px 15px;
     outline: none;
     margin: auto;
+    margin-bottom: 25px;
 }

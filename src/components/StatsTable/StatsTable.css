@@ -1,11 +1,17 @@
 .table-container {
-    margin-bottom: 25px;
+    background-color: white;
+    width: 75%;
+    margin: auto;  
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-radius:15px; 
 }
 
 table {
-    width: 90%;
     margin: auto;
-    text-align: left;
+    margin-bottom: 25px;
+    width: 100%;
+    text-align: center;
     border-collapse: collapse;
     border-spacing: 1px;
 }
@@ -13,14 +19,24 @@ table {
 table caption {
     font-size: 18px;
     font-weight: bold;
-    margin-bottom: 15px;
+    margin: 15px auto;
 }
 
 td {
     padding: 10px 0px;
 }
 
-tr:nth-child(even) {
+tbody tr:nth-child(odd) {
     background-color: rgb(239, 239, 239);
 }
 
+@media screen and (max-width: 768px)  {
+
+    .table-container {
+        width: 90%;
+    }
+
+    td, th {
+        font-size: 14px;
+    }
+}

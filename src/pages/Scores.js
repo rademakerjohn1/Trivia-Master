@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import './Scoreboard.css'
+import './Scores.css'
 import StatsTable from '../components/StatsTable/StatsTable';
 import PageLink from '../components/PageLink/PageLink'
 import Button from '../components/Button/Button'
 
 
-function Scoreboard() {
+function Scores() {
 
     const [stats, setStats] = useState(JSON.parse(window.localStorage.getItem('stats')) || []);
     const [easy, setEasy] = useState([]);
@@ -26,6 +26,7 @@ function Scoreboard() {
     return (
         stats.length > 0 ?
             <div id="stats-container">
+                <PageLink destination="#/" message={"Back"} />
                 {easy.length > 0 &&
                     <StatsTable difficulty={"Easy"} stats={easy} />
                 }
@@ -36,7 +37,6 @@ function Scoreboard() {
                     <StatsTable difficulty={"Hard"} stats={hard} />
                 }
                 <Button className="clear-btn" onClick={() => clear()} text="Clear" />
-                <PageLink destination="#/" message={"Back"} />
             </div>
             : <div id="stats-container">
                 <p>No stats available.</p>
@@ -47,4 +47,4 @@ function Scoreboard() {
     )
 }
 
-export default Scoreboard;
+export default Scores;

@@ -3,5 +3,9 @@
     font-family: 'Press Start 2P', cursive;
     font-size: 2.25em;
     line-height: 1.5em;
+    color: #E4DFDA;
 }
 
+#header-link {
+    text-decoration: none;
+}
