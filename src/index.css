@@ -6,10 +6,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
-  background: linear-gradient(to bottom, rgba(193, 102, 107, .97),rgba(193, 102, 107, .90) ),
+  background: 
+    linear-gradient(to bottom, rgba(193, 102, 107, .90),rgba(193, 102, 107, .80)),
     url('pattern299-01.svg');
-    /* background-color: #C1666B; (rgb(193, 102, 107)) */
-
 }
 
 code {
