@@ -1,8 +1,7 @@
 import React, { useState, useLayoutEffect, useEffect } from 'react';
 import './Quiz.css'
 import axios from 'axios'
-import Button from '../components/Button/Button'
-import PageLink from '../components/PageLink/PageLink'
+import Menu from  '../components/Menu/Menu'
 import Question from '../components/Question/Question'
 import Answer from '../components/Answer/Answer';
 import Timer from '../components/Timer/Timer';
@@ -12,6 +11,7 @@ import Form from '../components/Form/Form'
 function Quiz() {
     // State for trivia questions, timer, right/wrong count
     const [stats, setStats] = useState(JSON.parse(window.localStorage.getItem('stats')) || [])
+    const [token, setToken] = useState(window.localStorage.getItem('token') || '')
     const [initials, setInitials] = useState('')
     const [difficulty, setDifficulty] = useState('')
     const [questions, setQuestions] = useState([])
@@ -27,32 +27,51 @@ function Quiz() {
         window.localStorage.setItem('stats', JSON.stringify(stats))
     }, [stats])
 
-    // Get token, get questions and set timer and score
-    const startQuiz = async (level) => {
-        let token = await axios.get("https://opentdb.com/api_token.php?command=request")
-        token = token.data.token;
-        const data = await getQuestions(token);
-        setDifficulty(level)
-        setSeconds(10)
-        setQuestions(data)
-        setStart(true)
-    }
 
-    // Get data from API, combine and shuffle right/wrong answers
-    const getQuestions = async (sessionToken) => {
-        let trivia = await axios.get(`https://opentdb.com/api.php?token=${sessionToken}&amount=10&category=9&difficulty=${difficulty}&type=multiple`)
-        trivia = trivia.data.results
-        trivia.forEach(result => {
-            result.question = decode(result.question)
-            result.answers = shuffle([...result.incorrect_answers, result.correct_answer])
-            for (var i  = 0; i < result.answers.length; i++) {
-                result.answers[i] = decode(result.answers[i])
+    useEffect(() => {
+
+        window.localStorage.setItem('token', token)
+
+        // If no token, set error to request token
+        if (!token) setError("new token needed")
+
+        // If token and difficulty exist in state, validate token
+        if (token !== '' && difficulty !== '') {
+            validateToken(token, difficulty)
+        }
+
+        // If token is valid, format question sets and start quiz, else request token
+        async function validateToken(sessionToken, level) {
+            
+            const response = await axios.get(`https://opentdb.com/api.php?token=${sessionToken}&amount=10&category=9&difficulty=${level}&type=multiple`)
+            if (response.data.response_code === 4 || response.data.response_code === 3) {
+                setError("new token needed")
+            } 
+            else {
+                response.data.results.forEach(result => {
+                    result.question = decode(result.question)
+                    result.answers = shuffle([...result.incorrect_answers, result.correct_answer])
+                    for (var i = 0; i < result.answers.length; i++) {
+                        result.answers[i] = decode(result.answers[i])
+                    }
+                })
+                setSeconds(10)
+                setQuestions(response.data.results)
+                setStart(true)
             }
-        })
-        return trivia;
-    }
+        }
+    }, [token, difficulty])
 
-    // If there are questions in state, setTimeOut decrements timer each second
+    // If new token is needed, request new token and set to state 
+    useEffect(() => {
+        if (error === "new token needed") {
+            axios.get("https://opentdb.com/api_token.php?command=request")
+                .then(res => setToken(res.data.token)).then(setError(''))
+        }
+    }, [error])
+
+
+    // If questions in state, decrement timer each second
     useLayoutEffect(() => {
         if (!questions.length) return;
         const timer = setTimeout(() => {
@@ -61,8 +80,7 @@ function Quiz() {
         return () => clearTimeout(timer);
     });
 
-    // If user answer matches questions.correct_answer, increment correct, else increment incorrect
-    // Remove current question from array, reset timer
+    // If user answer matches correct_answer, increment correct, else increment incorrect. Remove current question, reset timer
     const userAnswer = (index) => {
         if (questions[0].answers[index] === questions[0].correct_answer) setCorrect(correct => correct + 1)
         else setIncorrect(incorrect => incorrect + 1)
@@ -70,7 +88,7 @@ function Quiz() {
         setSeconds(10);
     }
 
-    // If questions left and time reaches 0, increment incorrect count, remove current question, reset timer
+    // If questions left and time is 0, increment incorrect count, remove current question, reset timer
     // If correct or incorrect is non-zero AND no questions left, end quiz
     useEffect(() => {
         if (questions.length && seconds < 1) {
@@ -98,18 +116,14 @@ function Quiz() {
             return;
         }
         let userData = {
-            initials: initials,
-            difficulty: difficulty,
-            incorrect: incorrect,
-            correct: correct,
+            initials, difficulty, incorrect, correct,
             date: new Date(Date.now()).toLocaleString().split(",")[0],
             time: formatTime()
         }
         setStats(data => [...data, userData])
-        setError("")
         window.location = "#/scores";
     }
-
+    // Format time
     const formatTime = () => {
         let time = new Date(Date.now()).toLocaleString().split(",")[1].trim();
         let arr = time.split(":")
@@ -118,16 +132,12 @@ function Quiz() {
 
     // Randomize array order
     const shuffle = (array) => {
-
         var currentIndex = array.length, temporaryValue, randomIndex;
-
         // While there remain elements to shuffle...
         while (0 !== currentIndex) {
-
             // Pick a remaining element...
             randomIndex = Math.floor(Math.random() * currentIndex);
             currentIndex -= 1;
-
             // And swap it with the current element.
             temporaryValue = array[currentIndex];
             array[currentIndex] = array[randomIndex];
@@ -136,6 +146,7 @@ function Quiz() {
         return array;
     }
 
+    // Convert special character codes from questions and answers to text
     function decode(html) {
         var text = document.createElement("textarea");
         text.innerHTML = html;
@@ -144,59 +155,31 @@ function Quiz() {
 
     return (
         <div>
-            {/* If quiz not started, render buttons */}
-            {(!start && !end) &&
-                <div id="menu">
-                    <div id="difficulty-btn-container">
-                        <p>Select a difficulty</p>
-                        <Button className="difficulty-btn" onClick={() => startQuiz("easy")} text="Easy" />
-                        <Button className="difficulty-btn" onClick={() => startQuiz("medium")} text="Medium" />
-                        <Button className="difficulty-btn" onClick={() => startQuiz("hard")} text="Hard" />
-                    </div>
-                    <PageLink destination="#/scores" message={"See scores"} />
-                </div>
-            }
+            <Menu start={start} end={end} 
+            setEasy={() => setDifficulty("easy")} 
+            setMedium={() => setDifficulty("medium")} 
+            setHard={() => setDifficulty("hard")} />
 
-            {/* If quiz started, show timer */}
-            {start &&
-                <Timer seconds={seconds} />
-            }
+            <Timer start={start} seconds={seconds} />
 
-
-            {/* If questions in state render question/answers */}
             {questions.length > 0 &&
-                <div id="question-answer-container">
-                    <Question question={questions[0].question} />
-                    <div id="answer-container">
-                        <ol type="A">
-                            {questions[0].answers.map((answer, index) => (
-                                <Answer
-                                    key={index}
-                                    answer={answer}
-                                    onClick={() => userAnswer(index)}
-                                />))
-                            }
-                        </ol>
-                    </div>
+            <div id="question-answer-container">
+                <Question question={questions[0].question} />
+                <div id="answer-container">
+                    <ol type="A">
+                        {questions[0].answers.map((answer, index) => (
+                            <Answer key={index} answer={answer} onClick={() => userAnswer(index)}/>))}
+                    </ol>
                 </div>
-            }
+            </div>
+            }   
 
-            {/* If quiz started or ended, show scores */}
-            {(start || end) &&
-                <Scores correct={correct} incorrect={incorrect} />
-            }
+            <Scores start={start} end={end} correct={correct} incorrect={incorrect} />
 
-            {/* If quiz ended, show form */}
-            {end &&
-                <Form
-                    end={end}
-                    error={error}
-                    onChange={(event) => handleChange(event)}
-                    onSubmit={(event) => handleSave(event)}
-                />
-            }
+            <Form end={end} error={error} 
+            onChange={(event) => handleChange(event)} 
+            onSubmit={(event) => handleSave(event)}/>
         </div>
-
     )
 }
 
