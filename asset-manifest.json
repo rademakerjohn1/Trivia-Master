@@ -1,22 +1,23 @@
 {
   "files": {
-    "main.css": "/Trivia-Master/static/css/main.c24bc5f6.chunk.css",
-    "main.js": "/Trivia-Master/static/js/main.26e49a25.chunk.js",
-    "main.js.map": "/Trivia-Master/static/js/main.26e49a25.chunk.js.map",
+    "main.css": "/Trivia-Master/static/css/main.271ec088.chunk.css",
+    "main.js": "/Trivia-Master/static/js/main.9109ca1c.chunk.js",
+    "main.js.map": "/Trivia-Master/static/js/main.9109ca1c.chunk.js.map",
     "runtime-main.js": "/Trivia-Master/static/js/runtime-main.17555685.js",
     "runtime-main.js.map": "/Trivia-Master/static/js/runtime-main.17555685.js.map",
-    "static/js/2.27d0b855.chunk.js": "/Trivia-Master/static/js/2.27d0b855.chunk.js",
-    "static/js/2.27d0b855.chunk.js.map": "/Trivia-Master/static/js/2.27d0b855.chunk.js.map",
+    "static/js/2.8b9e097b.chunk.js": "/Trivia-Master/static/js/2.8b9e097b.chunk.js",
+    "static/js/2.8b9e097b.chunk.js.map": "/Trivia-Master/static/js/2.8b9e097b.chunk.js.map",
     "index.html": "/Trivia-Master/index.html",
-    "precache-manifest.2b6c85c4dbb51775cc45d9ddf1ff1e8e.js": "/Trivia-Master/precache-manifest.2b6c85c4dbb51775cc45d9ddf1ff1e8e.js",
+    "precache-manifest.11eb5985e1dbd7693cf8cb4f2681c671.js": "/Trivia-Master/precache-manifest.11eb5985e1dbd7693cf8cb4f2681c671.js",
     "service-worker.js": "/Trivia-Master/service-worker.js",
-    "static/css/main.c24bc5f6.chunk.css.map": "/Trivia-Master/static/css/main.c24bc5f6.chunk.css.map",
-    "static/js/2.27d0b855.chunk.js.LICENSE.txt": "/Trivia-Master/static/js/2.27d0b855.chunk.js.LICENSE.txt"
+    "static/css/main.271ec088.chunk.css.map": "/Trivia-Master/static/css/main.271ec088.chunk.css.map",
+    "static/js/2.8b9e097b.chunk.js.LICENSE.txt": "/Trivia-Master/static/js/2.8b9e097b.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/Trivia-Master/static/media/pattern299-01.c9ee57f0.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.17555685.js",
-    "static/js/2.27d0b855.chunk.js",
-    "static/css/main.c24bc5f6.chunk.css",
-    "static/js/main.26e49a25.chunk.js"
+    "static/js/2.8b9e097b.chunk.js",
+    "static/css/main.271ec088.chunk.css",
+    "static/js/main.9109ca1c.chunk.js"
   ]
 }
