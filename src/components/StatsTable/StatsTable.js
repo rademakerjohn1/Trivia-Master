@@ -1,24 +1,24 @@
 import React from 'react';
+import './StatsTable.css'
 
-function StatsTable({ stats, onClick }) {
+function StatsTable({ stats, difficulty }) {
 
     return (
-      <div>
+      <div className="table-container">
         <table>
+          <caption>{difficulty}</caption>
         <thead>
           <tr>
-            <th>Initials</th>
-            <th>Difficulty</th>
+            <th>User</th>
             <th>Score</th>
             <th>Date</th>
             <th>Time</th>
           </tr>
         </thead>
         <tbody>
-            {stats.map(stat => (
-                <tr>
+            {stats.map((stat, index) => (
+                <tr key={index}>
                     <td>{stat.initials}</td>
-                    <td>{stat.difficulty}</td>
                     <td>{(stat.correct / (stat.correct + stat.incorrect)) * 100}%</td>
                     <td>{stat.date}</td>
                     <td>{stat.time}</td>
@@ -26,8 +26,6 @@ function StatsTable({ stats, onClick }) {
             ))}
         </tbody>
       </table>
-      <a href="#/">Back</a>
-      <button onClick={onClick}>Clear</button>
       </div>
     )
 }
