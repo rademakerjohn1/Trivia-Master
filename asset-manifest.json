@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/Trivia-Master/static/css/main.4b0e8b3f.chunk.css",
-    "main.js": "/Trivia-Master/static/js/main.9109ca1c.chunk.js",
-    "main.js.map": "/Trivia-Master/static/js/main.9109ca1c.chunk.js.map",
-    "runtime-main.js": "/Trivia-Master/static/js/runtime-main.17555685.js",
-    "runtime-main.js.map": "/Trivia-Master/static/js/runtime-main.17555685.js.map",
-    "static/js/2.8b9e097b.chunk.js": "/Trivia-Master/static/js/2.8b9e097b.chunk.js",
-    "static/js/2.8b9e097b.chunk.js.map": "/Trivia-Master/static/js/2.8b9e097b.chunk.js.map",
-    "index.html": "/Trivia-Master/index.html",
-    "precache-manifest.ccbbde50cf008ec723032d78b3beab6a.js": "/Trivia-Master/precache-manifest.ccbbde50cf008ec723032d78b3beab6a.js",
-    "service-worker.js": "/Trivia-Master/service-worker.js",
-    "static/css/main.4b0e8b3f.chunk.css.map": "/Trivia-Master/static/css/main.4b0e8b3f.chunk.css.map",
-    "static/js/2.8b9e097b.chunk.js.LICENSE.txt": "/Trivia-Master/static/js/2.8b9e097b.chunk.js.LICENSE.txt",
-    "static/media/index.css": "/Trivia-Master/static/media/pattern299-01.c9ee57f0.svg"
+    "main.css": "/trivia-master/static/css/main.627cdcfd.chunk.css",
+    "main.js": "/trivia-master/static/js/main.cd5363a6.chunk.js",
+    "main.js.map": "/trivia-master/static/js/main.cd5363a6.chunk.js.map",
+    "runtime-main.js": "/trivia-master/static/js/runtime-main.19cda06b.js",
+    "runtime-main.js.map": "/trivia-master/static/js/runtime-main.19cda06b.js.map",
+    "static/js/2.8b9e097b.chunk.js": "/trivia-master/static/js/2.8b9e097b.chunk.js",
+    "static/js/2.8b9e097b.chunk.js.map": "/trivia-master/static/js/2.8b9e097b.chunk.js.map",
+    "index.html": "/trivia-master/index.html",
+    "precache-manifest.b3d7d271e0a31472615b32b129a61ec5.js": "/trivia-master/precache-manifest.b3d7d271e0a31472615b32b129a61ec5.js",
+    "service-worker.js": "/trivia-master/service-worker.js",
+    "static/css/main.627cdcfd.chunk.css.map": "/trivia-master/static/css/main.627cdcfd.chunk.css.map",
+    "static/js/2.8b9e097b.chunk.js.LICENSE.txt": "/trivia-master/static/js/2.8b9e097b.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/trivia-master/static/media/pattern299-01.0917fd95.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.17555685.js",
+    "static/js/runtime-main.19cda06b.js",
     "static/js/2.8b9e097b.chunk.js",
-    "static/css/main.4b0e8b3f.chunk.css",
-    "static/js/main.9109ca1c.chunk.js"
+    "static/css/main.627cdcfd.chunk.css",
+    "static/js/main.cd5363a6.chunk.js"
   ]
 }
