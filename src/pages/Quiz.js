@@ -6,10 +6,12 @@ import Question from '../components/Question/Question'
 import Answer from '../components/Answer/Answer';
 import Timer from '../components/Timer/Timer';
 import Scores from '../components/Scores/Scores';
+import Feedback from '../components/Feedback/Feedback'
 import Form from '../components/Form/Form'
 
 function Quiz() {
     // State for trivia questions, timer, right/wrong count
+    const [message, setMessage] = useState('')
     const [stats, setStats] = useState(JSON.parse(window.localStorage.getItem('stats')) || [])
     const [token, setToken] = useState(window.localStorage.getItem('token') || '')
     const [initials, setInitials] = useState('')
@@ -27,29 +29,23 @@ function Quiz() {
         window.localStorage.setItem('stats', JSON.stringify(stats))
     }, [stats])
 
-
+    // If no token, set error to retreive new token, else validate token
+    // If valid token, format questions and start quiz
     useEffect(() => {
 
         window.localStorage.setItem('token', token)
-
-        // If no token, set error to request token
         if (!token) setError("new token needed")
+        if (token !== '' && difficulty !== '') validateToken(token, difficulty)
 
-        // If token and difficulty exist in state, validate token
-        if (token !== '' && difficulty !== '') {
-            validateToken(token, difficulty)
-        }
-
-        // If token is valid, format question sets and start quiz, else request token
         async function validateToken(sessionToken, level) {
-            
-            const response = await axios.get(`https://opentdb.com/api.php?token=${sessionToken}&amount=10&category=9&difficulty=${level}&type=multiple`)
+            const response = await axios.get(`https://opentdb.com/api.php?token=${sessionToken}&amount=15&category=9&difficulty=${level}&type=multiple`)
             if (response.data.response_code === 4 || response.data.response_code === 3) {
                 setError("new token needed")
             } 
             else {
                 response.data.results.forEach(result => {
                     result.question = decode(result.question)
+                    result.correct_answer = decode(result.correct_answer)
                     result.answers = shuffle([...result.incorrect_answers, result.correct_answer])
                     for (var i = 0; i < result.answers.length; i++) {
                         result.answers[i] = decode(result.answers[i])
@@ -80,12 +76,21 @@ function Quiz() {
         return () => clearTimeout(timer);
     });
 
-    // If user answer matches correct_answer, increment correct, else increment incorrect. Remove current question, reset timer
+    // If user answer is correct, increment correct, else increment incorrect. 
+    // Show feedback, remove question and reset timer 
     const userAnswer = (index) => {
-        if (questions[0].answers[index] === questions[0].correct_answer) setCorrect(correct => correct + 1)
-        else setIncorrect(incorrect => incorrect + 1)
-        setQuestions(q => q.slice(1));
-        setSeconds(10);
+        if (questions[0].answers[index] === questions[0].correct_answer) {
+            setMessage("Correct!")
+            setCorrect(correct => correct + 1)
+        } else {
+            setMessage(`Wrong. The correct answer is: ${questions[0].correct_answer}`)
+            setIncorrect(incorrect => incorrect + 1)
+        } 
+        setTimeout(() => {
+            setMessage("")
+            setQuestions(q => q.slice(1));
+            setSeconds(10);
+        }, 1000);
     }
 
     // If questions left and time is 0, increment incorrect count, remove current question, reset timer
@@ -97,6 +102,8 @@ function Quiz() {
             setSeconds(10);
         }
         if ((correct || incorrect) && !questions.length) {
+            let percentage = Math.round((correct / (correct + incorrect)) * 100)
+            setMessage(`You scored ${percentage}%. Thanks for playing!`)
             setStart(false)
             setEnd(true)
         }
@@ -105,12 +112,13 @@ function Quiz() {
 
     // Set input value to state
     const handleChange = (event) => {
-        setInitials(event.target.value)
+        setInitials(event.target.value.toUpperCase())
     }
 
     // Save user initials and score to storage state, show error if no input value or input !isNaN
     const handleSave = (event) => {
         event.preventDefault()
+
         if (!isNaN(initials) || !initials) {
             setError("Please enter at least one initial")
             return;
@@ -132,16 +140,16 @@ function Quiz() {
 
     // Randomize array order
     const shuffle = (array) => {
-        var currentIndex = array.length, temporaryValue, randomIndex;
+        var currentIndex = array.length, tempValue, randIndex;
         // While there remain elements to shuffle...
         while (0 !== currentIndex) {
             // Pick a remaining element...
-            randomIndex = Math.floor(Math.random() * currentIndex);
+            randIndex = Math.floor(Math.random() * currentIndex);
             currentIndex -= 1;
             // And swap it with the current element.
-            temporaryValue = array[currentIndex];
-            array[currentIndex] = array[randomIndex];
-            array[randomIndex] = temporaryValue;
+            tempValue = array[currentIndex];
+            array[currentIndex] = array[randIndex];
+            array[randIndex] = tempValue;
         }
         return array;
     }
@@ -155,30 +163,31 @@ function Quiz() {
 
     return (
         <div>
-            <Menu start={start} end={end} 
-            setEasy={() => setDifficulty("easy")} 
-            setMedium={() => setDifficulty("medium")} 
-            setHard={() => setDifficulty("hard")} />
+            <Menu 
+                start={start} end={end} 
+                setEasy={() => setDifficulty("easy")} 
+                setMedium={() => setDifficulty("medium")} 
+                setHard={() => setDifficulty("hard")} />
 
             <Timer start={start} seconds={seconds} />
-
-            {questions.length > 0 &&
-            <div id="question-answer-container">
-                <Question question={questions[0].question} />
-                <div id="answer-container">
-                    <ol type="A">
-                        {questions[0].answers.map((answer, index) => (
-                            <Answer key={index} answer={answer} onClick={() => userAnswer(index)}/>))}
-                    </ol>
+            
+            {message ? <Feedback message={message} /> 
+            : questions.length > 0 &&
+                <div id="question-answer-container">
+                    <Question question={questions[0].question} />
+                    <div id="answer-container">
+                        <ol type="A">
+                            {questions[0].answers.map((answer, index) => (
+                                <Answer key={index} answer={answer} onClick={() => userAnswer(index)}/>))}
+                        </ol>
+                    </div>
                 </div>
-            </div>
-            }   
-
+            } 
             <Scores start={start} end={end} correct={correct} incorrect={incorrect} />
-
-            <Form end={end} error={error} 
-            onChange={(event) => handleChange(event)} 
-            onSubmit={(event) => handleSave(event)}/>
+            <Form 
+                end={end} error={error} 
+                onChange={(event) => handleChange(event)} 
+                onSubmit={(event) => handleSave(event)}/>
         </div>
     )
 }
