@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/Trivia-Master/static/css/main.bcfca4a0.chunk.css",
+    "main.css": "/Trivia-Master/static/css/main.4b0e8b3f.chunk.css",
     "main.js": "/Trivia-Master/static/js/main.9109ca1c.chunk.js",
     "main.js.map": "/Trivia-Master/static/js/main.9109ca1c.chunk.js.map",
     "runtime-main.js": "/Trivia-Master/static/js/runtime-main.17555685.js",
@@ -8,16 +8,16 @@
     "static/js/2.8b9e097b.chunk.js": "/Trivia-Master/static/js/2.8b9e097b.chunk.js",
     "static/js/2.8b9e097b.chunk.js.map": "/Trivia-Master/static/js/2.8b9e097b.chunk.js.map",
     "index.html": "/Trivia-Master/index.html",
-    "precache-manifest.1ef3468d0ce70f0b157dadf7a9fdbfb9.js": "/Trivia-Master/precache-manifest.1ef3468d0ce70f0b157dadf7a9fdbfb9.js",
+    "precache-manifest.ccbbde50cf008ec723032d78b3beab6a.js": "/Trivia-Master/precache-manifest.ccbbde50cf008ec723032d78b3beab6a.js",
     "service-worker.js": "/Trivia-Master/service-worker.js",
-    "static/css/main.bcfca4a0.chunk.css.map": "/Trivia-Master/static/css/main.bcfca4a0.chunk.css.map",
+    "static/css/main.4b0e8b3f.chunk.css.map": "/Trivia-Master/static/css/main.4b0e8b3f.chunk.css.map",
     "static/js/2.8b9e097b.chunk.js.LICENSE.txt": "/Trivia-Master/static/js/2.8b9e097b.chunk.js.LICENSE.txt",
     "static/media/index.css": "/Trivia-Master/static/media/pattern299-01.c9ee57f0.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.17555685.js",
     "static/js/2.8b9e097b.chunk.js",
-    "static/css/main.bcfca4a0.chunk.css",
+    "static/css/main.4b0e8b3f.chunk.css",
     "static/js/main.9109ca1c.chunk.js"
   ]
 }
