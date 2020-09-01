@@ -1,0 +1,15 @@
+#difficulty-btn-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center
+}
+
+
+@media screen and (max-width: 768px)  {
+
+    .difficulty-btn, #difficulty-btn-container p {
+        width: 75%;
+        margin-bottom: 15px
+    }
+}
