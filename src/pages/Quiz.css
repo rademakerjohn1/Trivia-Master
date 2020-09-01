@@ -7,10 +7,3 @@ ol {
     list-style-position: inside;
     padding-inline-start: 0px;
 }
-
-@media screen and (max-width: 768px)  {
-
-    #question-answer-container {
-      width: 75%;
-    }
-  }
