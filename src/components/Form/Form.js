@@ -1,12 +1,14 @@
 import React from 'react'
+import './Form.css'
 
-function Form({ onSubmit, onChange, error }) {
-    return ( 
+function Form({ end, onSubmit, onChange, error }) {
+    return (
+        end && 
         <form onSubmit={onSubmit}>
             <label htmlFor="initials">Enter your initials</label><br />
             <input type="text" name="initials" onChange={onChange} maxLength="3" />
             <button type="submit">Submit</button>
-            {error && <p>{error}</p>}
+            {error && <p id="error">{error}</p>}
         </form>
     )
 }

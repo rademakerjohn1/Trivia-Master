@@ -1,11 +1,12 @@
 import React from 'react';
 import './Scores.css'
 
-function Scores({ correct, incorrect }) {
+function Scores({ start, end, correct, incorrect }) {
     return (
+        (start || end) &&
         <div id="score-container">
-            <p id="correct">Correct: {correct}</p>
-            <p id="incorrect">Incorrect: {incorrect}</p>
+            <p id="correct">Correct: <span className="score-text">{correct}</span></p>
+            <p id="incorrect">Incorrect: <span className="score-text">{incorrect}</span></p>
         </div>
     )
 }
