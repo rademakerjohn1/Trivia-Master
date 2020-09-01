@@ -19,7 +19,7 @@ function StatsTable({ stats, difficulty }) {
             {stats.map((stat, index) => (
                 <tr key={index}>
                     <td>{stat.initials}</td>
-                    <td>{(stat.correct / (stat.correct + stat.incorrect)) * 100}%</td>
+                    <td>{Math.round((stat.correct / (stat.correct + stat.incorrect)) * 100)}%</td>
                     <td>{stat.date}</td>
                     <td>{stat.time}</td>
                 </tr>
