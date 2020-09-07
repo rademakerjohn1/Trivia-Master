@@ -26,7 +26,7 @@ function Quiz(props) {
 
     useEffect(() => {
         if (!props.location.state) {
-            window.location = "/"
+            window.location = "#/"
         }
         setCategory(props.location.state.category)
         setDifficulty(props.location.state.difficulty)
