@@ -1,15 +1,12 @@
 #score-container {
     display: flex;
     justify-content: center;
-}
-
-#score-container p {
     color: white;
 }
 
 .score-text {
     font-weight: bold;
-    color: #E4DFDA;
+
 }
 
 #correct {

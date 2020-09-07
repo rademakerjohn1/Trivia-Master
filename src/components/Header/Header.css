@@ -1,9 +1,12 @@
 #header {
     text-align: center;
     font-family: 'Press Start 2P', cursive;
-    font-size: 2.25em;
+    font-size: 3.5em;
     line-height: 1.5em;
-    color: #E4DFDA;
+    color: white;
+    padding: 0px;
+    margin: 0px;
+    text-shadow: 10px 5px 0px black;
 }
 
 #header-link {

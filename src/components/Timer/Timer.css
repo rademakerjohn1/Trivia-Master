@@ -1,6 +1,8 @@
 #timer {
     text-align: center;
     font-weight: bold;
-    color: #e2b26a;
+    color: yellow;
     font-size: 24px;
+    text-shadow: 1px 1px 0px black;
+
 }

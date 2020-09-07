@@ -2,13 +2,13 @@
     width: 75%;
     text-align: center;
     margin: auto;
-    font-size: 20px;
+    font-size: 24px;
     font-weight: bold;
     color: #F7FFF7;
 }
 
 @media screen and (max-width: 768px)  {
     #feedback {
-        font-size: initial;
+        font-size: 18px;
     }
 }
