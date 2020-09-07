@@ -27,9 +27,11 @@ function Quiz(props) {
     useEffect(() => {
         if (!props.location.state) {
             window.location = "#/"
+        } else {
+            setCategory(props.location.state.category)
+            setDifficulty(props.location.state.difficulty)
         }
-        setCategory(props.location.state.category)
-        setDifficulty(props.location.state.difficulty)
+
     },[props.location.state])
 
     // When stats state is updated, save to localStorage
