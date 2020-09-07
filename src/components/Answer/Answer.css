@@ -1,5 +1,5 @@
 .answer {
-    background-color: #E4DFDA;
+    background-color: rgba(255,255,255,.75);
     border-radius: 10px;
     margin: auto;
     padding: 20px 20px 20px 25px;
@@ -9,7 +9,7 @@
 }
 
 .answer:hover {
-    background-color: #a3a7a5;
+    background-color: white;
 }
 
 
