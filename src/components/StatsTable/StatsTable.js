@@ -1,15 +1,16 @@
 import React from 'react';
 import './StatsTable.css'
 
-function StatsTable({ stats, difficulty }) {
+function StatsTable({ stats, category }) {
 
     return (
       <div className="table-container">
         <table>
-          <caption>{difficulty}</caption>
+          <caption>{category}</caption>
         <thead>
           <tr>
             <th>User</th>
+            <th>Difficulty</th>
             <th>Score</th>
             <th>Date</th>
             <th>Time</th>
@@ -19,6 +20,7 @@ function StatsTable({ stats, difficulty }) {
             {stats.map((stat, index) => (
                 <tr key={index}>
                     <td>{stat.initials}</td>
+                    <td>{stat.difficulty}</td>
                     <td>{Math.round((stat.correct / (stat.correct + stat.incorrect)) * 100)}%</td>
                     <td>{stat.date}</td>
                     <td>{stat.time}</td>

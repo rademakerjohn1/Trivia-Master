@@ -8,14 +8,14 @@ import Button from '../../components/Button/Button'
 function Scores() {
 
     const [stats, setStats] = useState(JSON.parse(window.localStorage.getItem('stats')) || []);
-    const [easy, setEasy] = useState([]);
-    const [medium, setMedium] = useState([]);
-    const [hard, setHard] = useState([]);
+    const [music, setMusic] = useState([]);
+    const [movies, setMovies] = useState([]);
+    const [television, setTelevision] = useState([]);
 
     useEffect(() => {
-        setEasy(stats.filter(stat => stat.difficulty === "easy"))
-        setMedium(stats.filter(stat => stat.difficulty === "medium"))
-        setHard(stats.filter(stat => stat.difficulty === "hard"))
+        setMusic(stats.filter(stat => stat.category === "12"))
+        setMovies(stats.filter(stat => stat.category === "11"))
+        setTelevision(stats.filter(stat => stat.category === "14"))
     }, [stats])
 
     const clear = () => {
@@ -27,14 +27,14 @@ function Scores() {
         stats.length > 0 ?
             <div id="stats-container">
                 <PageLink destination="#/" message={"Back"} />
-                {easy.length > 0 &&
-                    <StatsTable difficulty={"Easy"} stats={easy} />
+                {music.length > 0 &&
+                    <StatsTable category={"Music"} stats={music} />
                 }
-                {medium.length > 0 &&
-                    <StatsTable difficulty={"Medium"} stats={medium} />
+                {movies.length > 0 &&
+                    <StatsTable category={"Movies"} stats={movies} />
                 }
-                {hard.length > 0 &&
-                    <StatsTable difficulty={"Hard"} stats={hard} />
+                {television.length > 0 &&
+                    <StatsTable category={"Television"} stats={television} />
                 }
                 <Button className="clear-btn" onClick={() => clear()} text="Clear" />
             </div>
