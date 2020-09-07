@@ -8,3 +8,10 @@
     width: 75%;
 
 }
+
+@media screen and (max-width: 768px)  {
+    #timer {
+        font-size: 18px;
+        line-height: 1.35em;
+    }
+}

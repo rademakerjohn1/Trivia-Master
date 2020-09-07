@@ -10,7 +10,7 @@ function StatsTable({ stats, category }) {
         <thead>
           <tr>
             <th>User</th>
-            <th>Difficulty</th>
+            <th>Diff.</th>
             <th>Score</th>
             <th>Date</th>
             <th>Time</th>

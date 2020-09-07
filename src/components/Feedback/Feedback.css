@@ -6,9 +6,3 @@
     font-weight: bold;
     color: #F7FFF7;
 }
-
-@media screen and (max-width: 768px)  {
-    #feedback {
-        font-size: 18px;
-    }
-}

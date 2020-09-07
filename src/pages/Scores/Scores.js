@@ -13,6 +13,9 @@ function Scores() {
     const [television, setTelevision] = useState([]);
 
     useEffect(() => {
+        stats.forEach(stat => {
+            stat.difficulty = stat.difficulty.charAt(0).toUpperCase() + stat.difficulty.slice(1).toLowerCase()
+        })
         setMusic(stats.filter(stat => stat.category === "12"))
         setMovies(stats.filter(stat => stat.category === "11"))
         setTelevision(stats.filter(stat => stat.category === "14"))

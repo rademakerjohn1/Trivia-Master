@@ -93,7 +93,7 @@ function Quiz(props) {
             setMessage("Correct!")
             setCorrect(correct => correct + 1)
         } else {
-            setMessage(`Wrong. The correct answer is: ${questions[0].correct_answer}`)
+            setMessage(`Wrong. Correct answer: ${questions[0].correct_answer}`)
             setIncorrect(incorrect => incorrect + 1)
         } 
         setTimeout(() => {

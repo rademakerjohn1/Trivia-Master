@@ -17,11 +17,13 @@ form input {
 
 form button {
     border: none;
-    padding: 7px 15px;
-    background-color: #E4DFDA;
+    padding: 8px 15px;
+    background-color: blue;
+    color: white;
     outline: none;
 }
 
 #error {
-    color: red;
+    color: yellow;
+    margin: 0px;
 }
