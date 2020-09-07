@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     color: white;
-    font-size: 24px;
+    font-size: 18px;
 }
 
 .score-text {
@@ -13,9 +13,3 @@
 #correct {
     margin-right: 20px;
 }
-
-/* @media screen and (max-width: 768px)  {
-    #score-container {
-        font-size: 24px;
-    }
-} */
