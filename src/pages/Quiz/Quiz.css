@@ -3,6 +3,10 @@
     width: 75%;
 }
 
+#answer-container {
+    margin-top: 25px;
+}
+
 ol {
     list-style-position: inside;
     padding-inline-start: 0px;

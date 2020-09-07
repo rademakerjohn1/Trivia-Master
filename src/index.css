@@ -7,7 +7,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
   background: 
-    linear-gradient( rgba(0,0,0,.90),rgba(0,0,0,.5), rgba(0,0,0,.9)),
+    linear-gradient( rgba(2, 5, 31, 0.9),rgba(0,0,0,.6), rgba(0, 0, 0, 0.9)),
     url('V1904-048.svg');
   background-size: cover;
   background-position: top;
