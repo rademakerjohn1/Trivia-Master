@@ -1,5 +1,6 @@
 import React from 'react'
 import './Form.css'
+import PageLink from '../PageLink/PageLink'
 
 function Form({ end, onSubmit, onChange, error }) {
     return (
@@ -9,6 +10,7 @@ function Form({ end, onSubmit, onChange, error }) {
             <input type="text" name="initials" onChange={onChange} maxLength="3" />
             <button type="submit">Submit</button>
             {error && <p id="error">{error}</p>}
+            <PageLink destination="#/" message={"Play Again"} />
         </form>
     )
 }
