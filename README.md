@@ -1,6 +1,6 @@
 # Trivia Master
 
-Trivia Master is a quiz application that allows the user to take a timed multiple choice quiz of 15 questions with three levels of difficulty to choose from. The user will receive unique questions for each quiz attempt until all available questions are from The Open Trivia Database are used, at which point a new token will be provided. The user can save and delete quiz scores using local storage.
+Trivia Master is a quiz application that allows the user to choose from three categories and difficulty levels and take a fifteen-question multiple choice quiz. The user will have ten seconds to answer each question and will receive unique questions for each quiz attempt until all available questions are from The Open Trivia Database are used, at which point a new token will be provided. The user can save and delete quiz scores using local storage.
 
 **Deployed Application:** (https://rademakerjohn1.github.io/trivia-master/)
 
