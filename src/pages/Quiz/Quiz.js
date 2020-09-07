@@ -134,7 +134,7 @@ function Quiz(props) {
             return;
         }
         let userData = {
-            initials, difficulty, incorrect, correct,
+            initials, difficulty, incorrect, correct, category,
             date: new Date(Date.now()).toLocaleString().split(",")[0],
             time: formatTime()
         }
@@ -173,11 +173,11 @@ function Quiz(props) {
 
     return (
         <div>
-            <Timer start={start} seconds={(message && !end) ? message : seconds} />
             {(end && message) && <Feedback message={message} /> }
             {(questions.length) > 0 &&
                 <div id="question-answer-container">
                     <Question question={questions[0].question} />
+                    <Timer start={start} seconds={(message && !end) ? message : seconds} />
                     <div id="answer-container">
                         <ol type="A">
                             {questions[0].answers.map((answer, index) => (
