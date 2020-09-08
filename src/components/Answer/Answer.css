@@ -5,7 +5,12 @@
     padding: 20px 20px 20px 25px;
     margin-bottom: 15px;
     box-shadow: 5px 5px 5px rgba(0,0,0,.2);
+}
 
+.answer.selected {
+    background-color: rgb(47, 72, 213);
+    color: white;
+    font-weight: bold;
 }
 
 

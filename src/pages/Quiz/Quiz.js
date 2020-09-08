@@ -11,6 +11,7 @@ import Form from '../../components/Form/Form'
 function Quiz(props) {
     // State for trivia questions, timer, right/wrong count
     const [message, setMessage] = useState('')
+    const [selected, setSelected] = useState('')
     const [stats, setStats] = useState(JSON.parse(window.localStorage.getItem('stats')) || [])
     const [token, setToken] = useState(window.localStorage.getItem('token') || '')
     const [initials, setInitials] = useState('')
@@ -89,6 +90,7 @@ function Quiz(props) {
     // If user answer is correct, increment correct, else increment incorrect. 
     // Show feedback, remove question and reset timer 
     const userAnswer = (index) => {
+        setSelected(index)
         if (questions[0].answers[index] === questions[0].correct_answer) {
             setMessage("Correct!")
             setCorrect(correct => correct + 1)
@@ -100,8 +102,15 @@ function Quiz(props) {
             setMessage("")
             setQuestions(q => q.slice(1));
             setSeconds(10);
-        }, 1000);
+            setSelected("")
+        }, 1500);
     }
+
+    const checkSelected = (i) => {
+        const isSelected = selected === i;
+        return isSelected ? " selected" : ''
+    }
+
 
     // If questions left and time is 0, increment incorrect count, remove current question, reset timer
     // If correct or incorrect is non-zero AND no questions left, end quiz
@@ -181,7 +190,7 @@ function Quiz(props) {
                     <div id="answer-container">
                         <ol type="A">
                             {questions[0].answers.map((answer, index) => (
-                                <Answer message={message} key={index} answer={answer} onClick={() => userAnswer(index)}/>))}
+                                <Answer selected={checkSelected(index)} message={message} key={index} answer={answer} onClick={() => userAnswer(index)}/>))}
                         </ol>
                     </div>
                 </div>
